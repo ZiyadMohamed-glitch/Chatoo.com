@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="سجّل الآن في Chatoo، أول منصة تعارف صوتي بسرية باستخدام الأفاتار." />
+    <meta name="keywords" content="Chatoo, موقع تعارف, شات صوتي, تعارف شباب وبنات, التسجيل, سري" />
+    <title>تسجيل مستخدم جديد | Chatoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        label,
+        input,
+        select {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input,
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .avatars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .avatars img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: border 0.2s;
+        }
+
+        .avatars img.selected {
+            border-color: #7f5af0;
+        }
+
+        button {
+            background-color: #7f5af0;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="text-align:center;">إنشاء حساب جديد على Chatoo</h2>
+        <form id="registerForm" onsubmit="return validateForm()">
+
+            <label>الاسم الكامل</label>
+            <input type="text" id="name" required />
+
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="email" required />
+
+            <label>رقم الهاتف</label>
+            <input type="tel" id="phone" pattern="[0-9]{11}" placeholder="مثال: 01012345678" required />
+
+            <label>تاريخ الميلاد</label>
+            <input type="date" id="dob" required />
+
+            <label>كلمة السر</label>
+            <input type="password" id="password" required />
+
+            <label>رفع صورة شخصية (ستبقى مخفية)</label>
+            <input type="file" id="privateImage" accept="image/*" />
+
+            <label>اختر أفاتارك (اختر واحد فقط)</label>
+            <div class="avatars" id="avatarContainer">
+                <!-- سيتم توليد صور الأفاتار تلقائيًا عبر JavaScript -->
+            </div>
+            <input type="hidden" id="selectedAvatar" name="avatar" />
+
+            <label>النوع</label>
+            <select id="gender" required>
+                <option value="">-- اختر النوع --</option>
+                <option value="ذكر">ذكر</option>
+                <option value="أنثى">أنثى</option>
+            </select>
+
+            <button type="submit">إنشاء الحساب</button>
+        </form>
+    </div>
+
+    <script>
+        // توليد 35 أفاتار تلقائيًا من مجلد avatars/
+        const avatarContainer = document.getElementById("avatarContainer");
+        for (let i = 1; i <= 35; i++) {
+            let img = document.createElement("img");
+            img.src = `avatarsavatar1.png${i}.png`;
+            img.alt = `أفاتار ${i}`;
+            img.onclick = () => selectAvatar(img);
+            avatarContainer.appendChild(img);
+        }
+
+        function selectAvatar(img) {
+            document.querySelectorAll('.avatars img').forEach(el => el.classList.remove('selected'));
+            img.classList.add('selected');
+            document.getElementById("selectedAvatar").value = img.src;
+        }
+
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let dob = document.getElementById("dob").value;
+            let password = document.getElementById("password").value;
+            let avatar = document.getElementById("selectedAvatar").value;
+            let gender = document.getElementById("gender").value;
+
+            if (!name || !email || !phone || !dob || !password || !avatar || !gender) {
+                alert("يرجى إكمال جميع البيانات واختيار أفاتار.");
+                return false;
+            }
+
+            alert("تم التسجيل بنجاح ✅");
+            // هنا تقدر تضيف كود تخزين البيانات في قاعدة بيانات أو Firebase
+            return false;
+        }
+    </script>
+</body>
+
+</html>

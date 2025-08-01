@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatoo - Home / Feed</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            color: #fff;
+        }
+
+        .container {
+            padding: 30px 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #00bcd4;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            resize: vertical;
+            margin-bottom: 10px;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: #00bcd4;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .post {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .post .actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .post .actions span {
+            cursor: pointer;
+            color: #00bcd4;
+        }
+
+        .comment-box {
+            margin-top: 10px;
+        }
+
+        .comment-box input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            background-color: #2c2c2c;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="home.html" class="active">🏠 Home</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="chat.html">💬 Chat</a>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="notifications.html">🔔 Notifications</a>
+        <a href="faq.html">❓ FAQ</a>
+    </nav>
+
+    <!-- الصفحة الرئيسية / المنشورات -->
+    <div class="container">
+        <h2>Welcome back, Zizo 👋</h2>
+
+        <!-- نشر بوست جديد -->
+        <form>
+            <textarea placeholder="شارك حاجة مع أصدقائك..."></textarea>
+            <br />
+            <button type="submit">نشر</button>
+        </form>
+
+        <!-- المنشورات -->
+        <div class="post">
+            <p><strong>Ahmed:</strong> استمتعت جدًا بمكالمة اليوم 👌</p>
+            <div class="actions">
+                <span>❤️ إعجاب</span>
+                <span>💬 تعليق</span>
+                <span>🔄 مشاركة</span>
+            </div>
+            <div class="comment-box">
+                <input type="text" placeholder="اكتب تعليقك..." />
+            </div>
+        </div>
+
+        <div class="post">
+            <p><strong>Sara:</strong> الهوايات بتكشف عن الشخصية الحقيقية ❤️</p>
+            <div class="actions">
+                <span>❤️ إعجاب</span>
+                <span>💬 تعليق</span>
+                <span>🔄 مشاركة</span>
+            </div>
+            <div class="comment-box">
+                <input type="text" placeholder="اكتب تعليقك..." />
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // تفعيل اللايك
+    document.querySelectorAll('.actions span:first-child').forEach(likeBtn => {
+        likeBtn.addEventListener('click', () => {
+            if (likeBtn.textContent.includes("❤️")) {
+                likeBtn.textContent = "💙 تم الإعجاب";
+            } else {
+                likeBtn.textContent = "❤️ إعجاب";
+            }
+        });
+    });
+
+    // تفعيل المشاركة
+    document.querySelectorAll('.actions span:nth-child(3)').forEach(shareBtn => {
+        shareBtn.addEventListener('click', () => {
+            alert("🔗 تم نسخ رابط المشاركة (وهميًا) إلى الحافظة!");
+            // navigator.clipboard.writeText("رابط البوست"); // في النسخة الكاملة
+        });
+    });
+
+    // تفعيل التعليق
+    document.querySelectorAll('.comment-box input').forEach((inputBox, index) => {
+        inputBox.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const commentText = this.value.trim();
+                if (commentText !== "") {
+                    const comment = document.createElement('p');
+                    comment.style.margin = "5px 0";
+                    comment.style.color = "#ccc";
+                    comment.innerHTML = `<strong>أنت:</strong> ${commentText}`;
+                    this.parentElement.parentElement.appendChild(comment);
+                    this.value = "";
+                }
+            }
+        });
+    });
+
+    // تفعيل زر نشر بوست
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const textarea = this.querySelector('textarea');
+        const postText = textarea.value.trim();
+        if (postText !== "") {
+            const newPost = document.createElement('div');
+            newPost.className = "post";
+            newPost.innerHTML = `
+        <p><strong>أنت:</strong> ${postText}</p>
+        <div class="actions">
+          <span>❤️ إعجاب</span>
+          <span>💬 تعليق</span>
+          <span>🔄 مشاركة</span>
+        </div>
+        <div class="comment-box">
+          <input type="text" placeholder="اكتب تعليقك..." />
+        </div>
+      `;
+            document.querySelector('.container').appendChild(newPost);
+            textarea.value = "";
+            // إعادة تفعيل السكريبت للبوست الجديد
+            setTimeout(() => {
+                // إعادة ربط السكريبت للبوت الجديد
+                likeCommentShareScript();
+            }, 100);
+        }
+    });
+
+    // وظيفة لإعادة ربط الحدث بعد نشر بوست جديد
+    function likeCommentShareScript() {
+        document.querySelectorAll('.actions span:first-child').forEach(likeBtn => {
+            likeBtn.onclick = () => {
+                likeBtn.textContent = likeBtn.textContent.includes("❤️") ? "💙 تم الإعجاب" : "❤️ إعجاب";
+            };
+        });
+
+        document.querySelectorAll('.actions span:nth-child(3)').forEach(shareBtn => {
+            shareBtn.onclick = () => {
+                alert("🔗 تم نسخ رابط المشاركة (وهميًا)!");
+            };
+        });
+
+        document.querySelectorAll('.comment-box input').forEach((inputBox) => {
+            inputBox.onkeypress = function (e) {
+                if (e.key === 'Enter') {
+                    const commentText = this.value.trim();
+                    if (commentText !== "") {
+                        const comment = document.createElement('p');
+                        comment.style.color = "#ccc";
+                        comment.innerHTML = `<strong>أنت:</strong> ${commentText}`;
+                        this.parentElement.parentElement.appendChild(comment);
+                        this.value = "";
+                    }
+                }
+            };
+        });
+    }
+
+</script>
+
+</html>

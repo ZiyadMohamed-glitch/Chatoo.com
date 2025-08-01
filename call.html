@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مكالمة صوتية - Chatoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .avatars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .avatar {
+            text-align: center;
+        }
+
+        .avatar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #444;
+        }
+
+        .label {
+            margin-top: 10px;
+            background: #222;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .timer {
+            margin-top: 40px;
+            font-size: 24px;
+            background: #333;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .end-call {
+            margin-top: 40px;
+        }
+
+        .end-call button {
+            padding: 12px 24px;
+            background: crimson;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🗣️ مكالمة صوتية مع شريك التوافق</h1>
+
+    <div class="avatars">
+        <div class="avatar">
+            <img src="avatars/avatar1.png" alt="أنت">
+            <div class="label" id="label1">Hi</div>
+        </div>
+        <div class="avatar">
+            <img src="avatars/avatar2.png" alt="الطرف الآخر">
+            <div class="label" id="label2">Hi</div>
+        </div>
+    </div>
+
+    <div class="timer" id="timer">10:00</div>
+
+    <div class="end-call" id="endCallSection" style="display:none;">
+        <p>انتهت المكالمة.</p>
+        <button onclick="sendFriendRequest()">📩 إرسال طلب صداقة</button>
+    </div>
+
+    <script>
+        const timerDisplay = document.getElementById("timer");
+        const label1 = document.getElementById("label1");
+        const label2 = document.getElementById("label2");
+        const endCall = document.getElementById("endCallSection");
+
+        const labels = [
+            { text: "Hi", minutes: 2 },
+            { text: "Business", minutes: 2 },
+            { text: "Hobbies", minutes: 2 },
+            { text: "Interests", minutes: 2 },
+            { text: "🎥 فتح الكاميرا", minutes: 2 }
+        ];
+
+        let totalSeconds = 600;
+        let currentPhase = 0;
+        let phaseEnd = 600 - labels[0].minutes * 60;
+
+        const updateTimer = () => {
+            if (totalSeconds <= 0) {
+                clearInterval(timerInterval);
+                label1.textContent = "انتهت";
+                label2.textContent = "انتهت";
+                endCall.style.display = "block";
+                return;
+            }
+
+            totalSeconds--;
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            // تغيّر المرحلة
+            if (totalSeconds === phaseEnd && currentPhase < labels.length - 1) {
+                currentPhase++;
+                label1.textContent = labels[currentPhase].text;
+                label2.textContent = labels[currentPhase].text;
+                phaseEnd -= labels[currentPhase].minutes * 60;
+            }
+        };
+
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        function sendFriendRequest() {
+            alert("✅ تم إرسال طلب صداقة!");
+            window.location.href = "feed.html"; // رجوع للصفحة الرئيسية
+        }
+    </script>
+
+</body>
+
+</html>

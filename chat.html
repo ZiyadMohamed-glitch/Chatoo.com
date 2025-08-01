@@ -1,0 +1,106 @@
+<!-- chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Private text chat between friends on Chatoo after a voice call connection." />
+    <meta name="keywords" content="Chatoo, chat, text messaging, voice call, dating" />
+    <title>Chat - Chatoo</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .chat-header {
+            background-color: #111;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            color: #7f5af0;
+            border-bottom: 1px solid #222;
+        }
+
+        .chat-box {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+        }
+
+        .sent {
+            background-color: #7f5af0;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .received {
+            background-color: #2e2e2e;
+            color: white;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: #111;
+            border-top: 1px solid #222;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #222;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            background-color: #7f5af0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat-header">
+        Chat with Yasmin Tarek (Avatar Only)
+    </div>
+
+    <div class="chat-box">
+        <div class="message received">Hi! Nice to meet you 😊</div>
+        <div class="message sent">Hey Yasmin! You too 😄</div>
+        <div class="message received">Do you want to continue chatting?</div>
+        <div class="message sent">Sure! Let’s get to know each other more 💬</div>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" placeholder="Type your message..." />
+        <button>Send</button>
+    </div>
+
+</body>
+
+</html>

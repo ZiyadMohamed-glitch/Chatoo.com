@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends Feed - Chatoo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            color: #7f5af0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .feed-container {
+            padding: 20px;
+            margin-bottom: 80px;
+        }
+
+        .post {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .post h4 {
+            margin: 0;
+            color: #7f5af0;
+        }
+
+        .post p {
+            margin-top: 10px;
+        }
+
+        .post img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+        }
+
+        .actions button {
+            background: none;
+            border: none;
+            color: #7f5af0;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            color: #fff;
+        }
+
+        .comment-box {
+            margin-top: 10px;
+        }
+
+        .comment-box input {
+            width: 90%;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            margin-right: 5px;
+        }
+
+        .comment-box button {
+            padding: 8px 12px;
+            background-color: #7f5af0;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .new-post-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #7f5af0;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #111;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+        }
+
+        .bottom-nav a {
+            color: #7f5af0;
+            font-size: 22px;
+            text-decoration: none;
+        }
+
+        .bottom-nav a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>📰 منشورات الأصدقاء - Chatoo</header>
+
+    <div class="feed-container">
+
+        <div class="post">
+            <h4>Ahmed ElShahat</h4>
+            <p>أول رحلة في سيوة 🤍</p>
+            <img src="assets/images/posts/siwa.jpg" alt="Siwa Trip">
+
+            <div class="actions">
+                <button onclick="alert('تم الإعجاب')">❤️</button>
+                <button onclick="alert('أضف تعليقك في الأسفل')">💬</button>
+                <button onclick="alert('تم نسخ رابط المشاركة')">🔄</button>
+            </div>
+
+            <div class="comment-box">
+                <input type="text" placeholder="اكتب تعليقك هنا..." />
+                <button onclick="alert('تم إرسال التعليق')">إرسال</button>
+            </div>
+        </div>
+
+        <div class="post">
+            <h4>Farah Gamal</h4>
+            <p>بحب أرسم في وقت فراغي ✍️🎨</p>
+            <img src="assets/images/posts/art.jpg" alt="Artwork">
+
+            <div class="actions">
+                <button onclick="alert('تم الإعجاب')">❤️</button>
+                <button onclick="alert('أضف تعليقك في الأسفل')">💬</button>
+                <button onclick="alert('تم نسخ رابط المشاركة')">🔄</button>
+            </div>
+
+            <div class="comment-box">
+                <input type="text" placeholder="اكتب تعليقك هنا..." />
+                <button onclick="alert('تم إرسال التعليق')">إرسال</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- زر نشر بوست جديد -->
+    <button class="new-post-btn" onclick="alert('هيتم فتح نافذة كتابة منشور')">📝 منشور جديد</button>
+
+    <!-- شريط التنقل السفلي -->
+    <div class="bottom-nav">
+        <a href="home.html">🏠</a>
+        <a href="profile.html">👤</a>
+        <a href="chat.html">💬</a>
+        <a href="friends.html">👥</a>
+        <a href="feed.html">📰</a>
+        <a href="packages.html">💎</a>
+        <a href="settings.html">⚙️</a>
+    </div>
+
+</body>
+
+</html>

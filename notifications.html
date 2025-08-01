@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications - Chatoo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a.active,
+        nav a:hover {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .notification {
+            background-color: #1f1f1f;
+            border-left: 4px solid #007bff;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .notification:hover {
+            background-color: #2a2a2a;
+        }
+
+        .notification small {
+            display: block;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="home.html">🏠 Home</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="feed.html">📰 Feed</a>
+        <a href="chat.html">💬 Chat</a>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="notifications.html" class="active">🔔 Notifications</a>
+    </nav>
+
+    <!-- Notifications -->
+    <div class="container">
+        <h1>🔔 Notifications</h1>
+
+        <div class="notification">
+            ✅ You’ve received 5 free tries for referring a friend!
+            <small>2 minutes ago</small>
+        </div>
+
+        <div class="notification">
+            👤 Your friend request was accepted by Sarah.
+            <small>10 minutes ago</small>
+        </div>
+
+        <div class="notification">
+            ❤️ Someone liked your post.
+            <small>Today at 11:32 AM</small>
+        </div>
+
+        <div class="notification">
+            🔁 Someone shared your post.
+            <small>Today at 10:00 AM</small>
+        </div>
+
+        <div class="notification">
+            📞 A user invites you to start a voice chat session.
+            <small>Yesterday</small>
+        </div>
+
+        <div class="notification">
+            ⚠️ You’ve used all your free tries for this month.
+            <small>Yesterday</small>
+        </div>
+    </div>
+
+</body>
+
+</html>
